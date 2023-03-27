@@ -1,7 +1,10 @@
 import React from 'react';
+import ReactDOM from 'react-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 const Product = (props) => {
-    const { id, name, img, price, seller, quantity, ratings, stock } = props.children
+    const { id, name, img, price, seller, quantity, ratings, stock } = props.product
     const addToCart = props.addToCart
 
     return (
@@ -19,7 +22,7 @@ const Product = (props) => {
                     </div>
 
                     <div className="card-actions justify-end">
-                        <button onClick={() => addToCart(props.children)} className="btn btn-accent bg-orange-300 w-full text-orange-700 hover:text-orange-300">Buy Now</button>
+                        <button onClick={() => addToCart(props.children)} className="btn btn-accent bg-orange-300 w-full text-orange-700 hover:text-orange-300">Buy Now  <FontAwesomeIcon className='pl-2' icon={faShoppingCart} /></button>
                     </div>
                 </div>
             </div>
