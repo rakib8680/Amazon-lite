@@ -22,7 +22,7 @@ const Product = (props) => {
                     </div>
 
                     <div className="card-actions justify-end">
-                        <button onClick={() => addToCart(props.children)} className="btn btn-accent bg-orange-300 w-full text-orange-700 hover:text-orange-300">Buy Now  <FontAwesomeIcon className='pl-2' icon={faShoppingCart} /></button>
+                        <button onClick={() => addToCart(props.product)} className="btn btn-accent bg-orange-300 w-full text-orange-700 hover:text-orange-300">Buy Now  <FontAwesomeIcon className='pl-2' icon={faShoppingCart} /></button>
                     </div>
                 </div>
             </div>
