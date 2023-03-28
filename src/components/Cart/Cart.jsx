@@ -15,9 +15,12 @@ const Cart = ({ cart }) => {
         shippingFee = shippingFee + product.shipping
     };
 
+    // tax
     const tax = (total * 7) / 100;
+    
+    // grand total 
+    const grandTotal = total + shippingFee + tax
 
-    console.log(tax)
 
     return (
         <div>
@@ -28,7 +31,7 @@ const Cart = ({ cart }) => {
                 <h2>Total Shipping Charge : ${shippingFee}</h2>
                 <h2>Tax : ${tax}</h2>
             </div>
-            <h1>Grand Total: </h1>
+            <h1 className='text-2xl mt-10 font-semibold'>Grand Total : ${grandTotal.toFixed(2)} </h1>
         </div>
     );
 };
