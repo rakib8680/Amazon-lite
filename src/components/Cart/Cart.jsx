@@ -27,8 +27,8 @@ const Cart = ({ cart }) => {
 
     return (
         <div>
-            <p className='text-3xl font-semibold text-center'>Order Summery</p>
-            <div className='text-lg mt-10 space-y-6'>
+            <p className='md:text-3xl text-2xl font-semibold text-center'>Order Summery</p>
+            <div className=' text-lg mt-10 space-y-6'>
                 <h2>Selected Items : {quantity}</h2>
                 <h2>Total Price : ${total}</h2>
                 <h2>Total Shipping Charge : ${shippingFee}</h2>

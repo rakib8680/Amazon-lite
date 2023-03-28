@@ -66,7 +66,7 @@ const Shop = () => {
     return (
         <div className='Shop-Container flex lg:grid flex-col-reverse '>
 
-            <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3  gap-14 px- mx-auto mt-32'>
+            <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3  gap-14 mx-auto mt-32'>
                 {
                     products.map(product => <Product
                         key={product.id}
@@ -77,7 +77,7 @@ const Shop = () => {
             </div>
 
 
-            <div className='bg-orange-200   p-7 w-5/6 sticky top-0 py-12  h-fit'>
+            <div className='bg-orange-200   p-7 md:w-5/6 md:sticky top-0 py-12  h-fit'>
                 <Cart cart={cart}></Cart>
             </div>
         </div>

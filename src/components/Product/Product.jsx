@@ -9,9 +9,9 @@ const Product = (props) => {
 
     return (
         <>
-            <div className="card card-compact w-96 bg-base-100 shadow-xl p-3">
+            <div className="card card-compact md:w-96 bg-base-100 shadow-xl p-3">
                 <figure>
-                    <img src={img} alt="Shoes" />
+                    <img  className='w-full' src={img} alt="Shoes" />
                 </figure>
                 <div className="card-body">
                     <h2 className="card-title text-accent">{name}</h2>
