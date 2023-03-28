@@ -22,7 +22,7 @@ const Shop = () => {
     const addToCart = (product) => {
         const newCart = [...cart, product];
         setCart(newCart);
-    }
+    };
 
 
 
@@ -39,8 +39,9 @@ const Shop = () => {
                 }
             </div>
 
-            <div className='bg-orange-200  bg-opacity-70 p-7 w-5/6  '>
-                <Cart cart ={cart}></Cart>
+
+            <div className='bg-orange-200   p-7 w-5/6 sticky top-0   h-fit'>
+                <Cart cart={cart}></Cart>
             </div>
         </div>
     );
