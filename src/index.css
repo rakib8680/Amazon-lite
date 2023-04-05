@@ -5,3 +5,7 @@
 .nav-link-hover{
     @apply hover:text-orange-300 transition duration-200
 }
+
+.review-item{
+    @apply md:w-[571px] hover:border-orange-300 border hover:shadow-md hover:transition hover:duration-300 rounded-md md:p-2 p-1 mb-5 shadow-sm
+}
