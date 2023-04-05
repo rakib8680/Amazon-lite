@@ -77,7 +77,7 @@ const Shop = () => {
             </div>
 
 
-            <div className='bg-orange-200 rounded-b-3xl  p-7 md:w-5/6 md:sticky top-0 py-12  h-fit'>
+            <div className='bg-orange-200 rounded-b-3xl  p-7 md:w-5/6 md:sticky top-20 py-12  h-fit'>
                 <Cart cart={cart}></Cart>
             </div>
         </div>
