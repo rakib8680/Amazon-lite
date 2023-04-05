@@ -4,9 +4,9 @@ import logo from '../../assets/images/Logo.svg'
 
 const Header = () => {
     return (
-        <nav className='md:h-20 bg-slate-800 text-white md:flex md:justify-between p-10  md:px-32 items-center md:sticky top-0 z-10 md:backdrop-filter md:backdrop-blur-md md:bg-opacity-70'>
+        <nav className='nav-bar'>
             <img src={logo} alt="" />
-            <div className='flex md:flex-row flex-col gap-3 md:gap-10 mt-8  md:mt-0'>
+            <div className='nav-link'>
 
                 <Link to='/' className='nav-link-hover'>Home</Link>
                 <Link to='/order' className='nav-link-hover'>Order</Link>

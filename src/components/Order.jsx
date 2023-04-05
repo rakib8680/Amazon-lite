@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { getShoppingCart, removeFromDb } from '../assets/utilities/fakedb';
+import { deleteShoppingCart, getShoppingCart, removeFromDb } from '../assets/utilities/fakedb';
 import Cart from './Cart/Cart';
 import OrderReview from './OrderReview';
 import './Shop/Shop.css'
@@ -8,8 +8,6 @@ import './Shop/Shop.css'
 const Order = () => {
 
     const products = useLoaderData()
-    // console.log(products)
-
     const [cart, setCart] = useState(products);
     // get product using the id from local storage 
     useEffect(() => {
@@ -45,8 +43,16 @@ const Order = () => {
         const remaining = cart.filter(items => items.id !== id)
         setCart(remaining)
         removeFromDb(id)
+    };
 
+
+    // delete all cart items  
+    const deleteAllCartItems = () => {
+        setCart([])
+        deleteShoppingCart()
     }
+
+
 
 
     return (
@@ -62,7 +68,7 @@ const Order = () => {
 
             {/* cart  */}
             <div className='bg-orange-200 rounded-b-3xl md:sticky top-0  p-7 md:w-5/6  py-12  h-fit'>
-                <Cart cart={cart}></Cart>
+                <Cart cart={cart} deleteAllCartItems={deleteAllCartItems}></Cart>
             </div>
         </div>
     );
