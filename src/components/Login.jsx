@@ -9,7 +9,7 @@ import { UserContext } from './Providers/AuthProvider';
 const Login = () => {
 
 
-    const { logIn } = useContext(UserContext)
+    const { logIn, setUser } = useContext(UserContext)
 
     // error 
     const [error, setError] = useState('')
@@ -30,6 +30,8 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user
                 console.log(loggedUser);
+                setUser(loggedUser)
+                form.reset()
             })
             .catch(err => {
                 setError(err.message)

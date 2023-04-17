@@ -4,7 +4,7 @@ import { UserContext } from './Providers/AuthProvider';
 
 const Registration = () => {
 
-    const { createUser } = useContext(UserContext)
+    const { createUser, setUser } = useContext(UserContext)
 
 
 
@@ -54,7 +54,9 @@ const Registration = () => {
             .then(result => {
                 const loggedUser = result.user
                 console.log(loggedUser)
+                setUser(loggedUser)
                 setSuccess('User Created Successfully')
+                form.reset()
 
             })
             .catch(err =>{
