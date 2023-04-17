@@ -1,12 +1,51 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 
-function Login() {
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { UserContext } from './Providers/AuthProvider';
+
+
+
+
+const Login = () => {
+
+
+    const { logIn } = useContext(UserContext)
+
+    // error 
+    const [error, setError] = useState('')
+
+
+    // handle login 
+    const handleLogin = event => {
+
+        event.preventDefault()
+        const form = event.target
+        const email = form.email.value;
+        const password = form.password.value;
+
+
+        setError('')
+        // login to existing account 
+        logIn(email, password)
+            .then(result => {
+                const loggedUser = result.user
+                console.log(loggedUser);
+            })
+            .catch(err => {
+                setError(err.message)
+                console.log(err.message);
+            })
+
+    }
+
+
+
+
     return (
         <div className="flex items-center justify-center h-screen bg-gray-100">
             <div className="w-full max-w-md p-8 bg-white rounded shadow-lg">
                 <h1 className="text-2xl font-bold text-center text-gray-800">Login</h1>
-                <form className="mt-4 space-y-4">
+                <form className="mt-4 space-y-4" onSubmit={handleLogin}>
                     <div className="flex flex-col">
                         <label htmlFor="email" className="text-sm font-medium text-gray-600">Email</label>
                         <input type="email" id="email" name="email" className="p-2 mt-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-400" />
@@ -22,6 +61,7 @@ function Login() {
                         </div>
                         <Link to="/forgot-password" className="text-sm text-accent hover:underline">Forgot password?</Link>
                     </div>
+                    <p className='font-normal text-error text-sm'>{error}</p>
                     <button type="submit" className="w-full p-2 text-white bg-primary rounded hover:bg-accent focus:outline-none focus:ring-2 focus:ring-orange-800">Login</button>
                 </form>
                 <p className="mt-4 text-center text-gray-600">Don't have an account? <Link to="/registration" className="text-accent hover:underline">Sign up</Link></p>
@@ -39,6 +79,6 @@ function Login() {
             </div>
         </div>
     );
-}
+};
 
 export default Login;

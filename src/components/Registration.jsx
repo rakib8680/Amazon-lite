@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from './Providers/AuthProvider';
 
 const Registration = () => {
+
+    const { createUser } = useContext(UserContext)
+
 
 
     // error 
@@ -14,6 +18,7 @@ const Registration = () => {
 
 
     const handleSignUp = event => {
+
         event.preventDefault();
         const form = event.target
         const email = form.email.value;
@@ -22,15 +27,9 @@ const Registration = () => {
 
 
 
-
-
-
-
         // password validation 
         setError('')
         setSuccess('')
-
-
 
         if (!/(?=.*[A-Z])/.test(password)) {
             setError('Please provide one upperCase word')
@@ -49,8 +48,20 @@ const Registration = () => {
             return
         }
 
-        setSuccess('User Created Successfully')
-        console.log(email, password, confirm)
+
+        // create user using firebase 
+        createUser(email, password)
+            .then(result => {
+                const loggedUser = result.user
+                console.log(loggedUser)
+                setSuccess('User Created Successfully')
+
+            })
+            .catch(err =>{
+                setError(err.message);
+                console.log(err.message)
+            })
+
 
     }
 
