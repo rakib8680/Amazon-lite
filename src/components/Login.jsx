@@ -24,7 +24,7 @@ function Login() {
                     </div>
                     <button type="submit" className="w-full p-2 text-white bg-primary rounded hover:bg-accent focus:outline-none focus:ring-2 focus:ring-orange-800">Login</button>
                 </form>
-                <p className="mt-4 text-center text-gray-600">Don't have an account? <Link to="/sign-up" className="text-accent hover:underline">Sign up</Link></p>
+                <p className="mt-4 text-center text-gray-600">Don't have an account? <Link to="/registration" className="text-accent hover:underline">Sign up</Link></p>
                 <div className=' text-center my-3 text-slate-500'>
 
                     <p >or</p>
