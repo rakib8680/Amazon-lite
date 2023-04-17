@@ -1,6 +1,6 @@
 
 import React, { useContext, useState } from 'react';
-import { Link,  useLocation, useNavigate, } from 'react-router-dom';
+import { Link, useLocation, useNavigate, } from 'react-router-dom';
 import { UserContext } from './Providers/AuthProvider';
 
 
@@ -8,6 +8,8 @@ import { UserContext } from './Providers/AuthProvider';
 
 const Login = () => {
 
+
+    const [show, setShow] = useState(false)
 
     const { logIn, setUser } = useContext(UserContext)
     const navigate = useNavigate()
@@ -36,11 +38,10 @@ const Login = () => {
                 console.log(loggedUser);
                 setUser(loggedUser)
                 form.reset()
-                navigate(from,  {replace : true})
+                navigate(from, { replace: true })
             })
             .catch(err => {
-                setError(err.message)
-                console.log(err.message);
+                // setError(err.message)
             })
 
     }
@@ -59,7 +60,12 @@ const Login = () => {
                     </div>
                     <div className="flex flex-col">
                         <label htmlFor="password" className="text-sm font-medium text-gray-600">Password</label>
-                        <input type="password" id="password" name="password" className="p-2 mt-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                        <input type={show ? 'text' : 'password'} id="password" name="password" className="p-2 mt-1 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                    </div>
+                    <div onClick={() => setShow(!show)}>
+                        {
+                            show ? <span className='btn btn-xs btn-success'>Hide password</span> : <span className='btn btn-secondary btn-xs'>Show password</span>
+                        }
                     </div>
                     <div className="flex items-center justify-between">
                         <div className="flex items-center">
