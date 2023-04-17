@@ -17,16 +17,21 @@ const AuthProvider = ({ children }) => {
     // user 
     const [user, setUser] = useState(null)
 
+    // loader 
+    const [loading , setLoading ] = useState(true)
+
 
 
     // create user with gmail pass 
     const createUser = (email, password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password);
     };
 
 
     // sign in user 
     const logIn = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     };
 
@@ -41,6 +46,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
+            setLoading(false)
         })
         return () => {
             unsubscribe
@@ -54,7 +60,8 @@ const AuthProvider = ({ children }) => {
         user,
         createUser,
         logIn,
-        logOut
+        logOut,
+        loading
     }
 
 
