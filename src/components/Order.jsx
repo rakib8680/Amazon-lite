@@ -20,7 +20,7 @@ const Order = () => {
         for (const id in storedCart) {
 
             // step-2  get product by using id
-            const addedProduct = products.find(product => product.id === id);
+            const addedProduct = products.find(product => product._id === id);
 
             // step-3 get quantity 
             const quantity = storedCart[id];
@@ -40,7 +40,7 @@ const Order = () => {
 
     // new cart after deleting items 
     const deleteCartItems = (id) => {
-        const remaining = cart.filter(items => items.id !== id)
+        const remaining = cart.filter(items => items._id !== id)
         setCart(remaining)
         removeFromDb(id)
     };
@@ -62,7 +62,7 @@ const Order = () => {
             <div className='gap-14 mx-auto mt-20 md:mt-32 px-2  md:px-0'>
                 <h1 className='mb-5'>Orders product : {cart.length}</h1>
                 {
-                    cart.map(product => <OrderReview product={product} key={product.id} deleteCartItems={deleteCartItems}></OrderReview>)
+                    cart.map(product => <OrderReview product={product} key={product._id} deleteCartItems={deleteCartItems}></OrderReview>)
                 }
             </div>
 
